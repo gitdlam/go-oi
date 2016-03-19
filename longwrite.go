@@ -11,9 +11,13 @@ const (
 )
 
 
-// LongWrite trys to write the bytes from 'p' to the writer 'w', such that it deals
+// LongWrite tries to write the bytes from 'p' to the writer 'w', such that it deals
 // with "short writes" where w.Write would return an error of io.ErrShortWrite and
 // n < len(p).
+//
+// Note that LongWrite still could return the error io.ErrShortWrite; but this
+// would only be after trying to handle the io.ErrShortWrite a number of times, and
+// then eventually giving up.
 func LongWrite(w io.Writer, p []byte) (int64, error) {
 
 	numWritten := int64(0)
