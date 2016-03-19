@@ -6,11 +6,6 @@ import (
 )
 
 
-const (
-	lenBuffer = 64
-)
-
-
 // LongWrite tries to write the bytes from 'p' to the writer 'w', such that it deals
 // with "short writes" where w.Write would return an error of io.ErrShortWrite and
 // n < len(p).
