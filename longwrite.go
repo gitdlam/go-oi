@@ -20,10 +20,10 @@ func LongWrite(w io.Writer, p []byte) (int64, error) {
 	for {
 //@TODO: Should check to make sure this doesn't get stuck in an infinite loop writting nothing!
 		n, err := w.Write(p)
-		if nil != err && io.ErrShortWrite != err {
-			return int64(n), err
-		}
 		numWritten += int64(n)
+		if nil != err && io.ErrShortWrite != err {
+			return int64(numWritten), err
+		}
 
 		if !(n < len(p)) {
 			break
