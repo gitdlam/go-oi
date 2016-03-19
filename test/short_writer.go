@@ -17,10 +17,10 @@ import (
 //
 //	n, err := w.Write(p)
 //
-// Return an n < len(p) and err == io.ErrShortWrite.
+// Returns an n < len(p) and err == io.ErrShortWrite.
 //
 // A thing that can "handle" this situation might try
-// trying writing again, but only what didn't get written.
+// writing again, but only what didn't get written.
 //
 // For a simple example of this:
 //
@@ -32,7 +32,7 @@ import (
 //
 // Note that the second call to the Write method passed
 // 'p[n:]' (instead of just 'p'), to account for 'n' bytes
-// already being written (with the first call to the Write
+// already written (with the first call to the Write
 // method).
 //
 // A more "production quality" version of this would likely
