@@ -21,7 +21,7 @@ func LongWrite(w io.Writer, p []byte) (int64, error) {
 		n, err := w.Write(p)
 		numWritten += int64(n)
 		if nil != err && io.ErrShortWrite != err {
-			return int64(numWritten), err
+			return numWritten, err
 		}
 
 		if !(n < len(p)) {
